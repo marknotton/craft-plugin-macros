@@ -1,0 +1,10 @@
+{% macro admin(entry) %}
+  {% if currentUser and currentUser.admin %}
+    <div class="admin-quicklinks">
+      <a class="admin-cp" href="/admin" title="Go to Control Panel">Control Panel</a>
+      {% if entry is defined and entry is not empty %}
+        <span>|</span><a class="admin-edit" href="{{ entry.cpEditUrl }}" title="Edit this page" target="_blank">Edit this page</a>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endmacro %}

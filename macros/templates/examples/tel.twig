@@ -1,0 +1,13 @@
+{% macro tel(number, prefix, suffix) %}
+  {% set href = craft.request.isMobileBrowser ? "tel:"~number|replace(' ', '') : "callto:"~number|replace(' ', '') %}
+  <a href='{{ href }}'>
+    {% if prefix is defined and prefix is not empty %}{{ prefix }}{% endif %}
+    {{number}}
+    {% if suffix is defined and suffix is not empty %}{{ suffix }}{% endif %}
+  </a>
+{% endmacro %}
+
+{% macro href(number) %}
+  {% set href = craft.request.isMobileBrowser ? "tel:"~number|replace(' ', '') : "callto:"~number|replace(' ', '') %}
+  {{href}}
+{% endmacro %}

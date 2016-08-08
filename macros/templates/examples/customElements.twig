@@ -1,0 +1,15 @@
+{% macro customElements(elements) %}
+  {# TODO: Remove duplicates fromt the elements array if they exist #}
+  {% set defaultElements = ['basic-container', 'image-element', 'smart-container', 'main-wrapper', 'main-container', 'gallery-container', 'gallery-image'] %}
+
+  {% set defaultElements = defaultElements|merge(elements|split(', ')) %}
+
+  {% set customElements %}
+    {%- for element in defaultElements -%}  
+      {% set ceName = element|lower|split('-')|first|lower ~ element|lower|split('-')|last|capitalize ~ 'Element' %}
+      var {{ ceName }} = document.registerElement('{{element}}');
+    {% endfor %}
+    var customElements = {{defaultElements|json_encode()|raw}};
+  {% endset %}
+  {% includeJs customElements %}
+{% endmacro %}
