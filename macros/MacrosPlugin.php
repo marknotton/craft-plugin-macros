@@ -10,8 +10,16 @@ class MacrosPlugin extends BasePlugin {
     return '0.1';
   }
 
+  public function getSchemaVersion() {
+    return '0.1';
+  }
+
   public function getDeveloper() {
     return 'Yello Studio';
+  }
+
+  public function getDescription() {
+    return 'Manage macros and bulk load various macros automatically.';
   }
 
   public function getDeveloperUrl() {
