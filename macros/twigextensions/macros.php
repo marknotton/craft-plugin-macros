@@ -12,7 +12,7 @@ class macros extends \Twig_Extension {
   }
 
   public function getFunctions() {
-      
+
     return array(
       // "*"" is used to get "template_macro" as $macro as third argument
       new \Twig_SimpleFunction('macro_*', array($this, 'getMacro'), array(
@@ -24,7 +24,7 @@ class macros extends \Twig_Extension {
     );
   }
 
-  public function getMacro(\Twig_Environment $env, array $context, $macro, array $vars = array()) { 
+  public function getMacro(\Twig_Environment $env, array $context, $macro, array $vars = array()) {
 
     $macro = explode('_', $macro);
 
@@ -52,6 +52,8 @@ class macros extends \Twig_Extension {
     $args = implode(', ', array_map($varToContextKey, $vars));
 
     $dir = craft()->plugins->getPlugin('macros')->getSettings()['directory'];
+    $dir = empty($dir) ? "_macros" : $dir;
+    
     $twig = <<<EOT
 {% import '$dir/$name.twig' as $name %}
 {{ $name.$func($args) }}
@@ -59,7 +61,7 @@ EOT;
 
   try {
     $html = $env->createTemplate($twig)->render($context);
-  } 
+  }
   catch (\Twig_Error $e) {
     $e->setTemplateFile(sprintf('$dir/%s.twig', $name));
     throw $e;
