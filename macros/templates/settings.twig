@@ -1,10 +1,10 @@
 {% import "_includes/forms" as forms %}
 <h2>Macros File Location</h2>
 {{ forms.textField({
-  label: "Enter the directory your macros twig files are stored. This will be relative to your craft/templates directory. Default is '_macros/'."|t,
+  label: "Enter the directory your macros twig files are stored. This will be relative to your craft/templates directory. Default is '_macros'."|t,
   id: 'directory',
   name: 'directory',
-  placeholder: '_macros/',
+  placeholder: '_macros',
   value: settings.directory,
   errors: settings.getErrors('directory'),
 }) }}

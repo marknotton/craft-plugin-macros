@@ -52,8 +52,8 @@ class macros extends \Twig_Extension {
     $args = implode(', ', array_map($varToContextKey, $vars));
 
     $dir = craft()->plugins->getPlugin('macros')->getSettings()['directory'];
-    $dir = empty($dir) ? "_macros" : $dir;
-    
+    $dir = empty($dir) ? "_macros" : rtrim($dir, "/");
+
     $twig = <<<EOT
 {% import '$dir/$name.twig' as $name %}
 {{ $name.$func($args) }}
