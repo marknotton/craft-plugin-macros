@@ -2,6 +2,8 @@
 
 # Macros *for Craft CMS*
 
+> This plugin is no longer maintained. I'm committing to Craft 3 development only. Feel free to use the source code as you like. If you're looking for a Craft 3 version of this plugin, it's likely I've merged parts or all of this plugin into my [Helpers module.](https://github.com/marknotton/craft-module-helpers)
+
 Automatically import all macros from a designated directory.
 
 The thinking is, if want to modularise your Macros in a nice tidy folder... you probably are going to have to manually import them one at a time before you can start using them:
